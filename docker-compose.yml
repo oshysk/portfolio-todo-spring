@@ -1,0 +1,21 @@
+services:
+  database:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: springuser
+      POSTGRES_PASSWORD: springpass
+      POSTGRES_DB: springdatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  pgdata:
