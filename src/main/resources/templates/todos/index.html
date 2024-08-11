@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Todo</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/assets/img/favicons/apple-touch-icon.png}">
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/assets/img/favicons/favicon-32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/assets/img/favicons/favicon-16x16.png}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/img/favicons/favicon.ico}">
+    <link rel="manifest" th:href="@{/assets/img/favicons/manifest.json}">
+    <meta name="msapplication-TileImage" th:content="@{/assets/img/favicons/mstile-150x150.png}">
+    <meta name="theme-color" content="#ffffff">
+    <script th:src="@{/vendors/overlayscrollbars/OverlayScrollbars.min.js}"></script>
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link th:href="@{/assets/css/theme.css}" rel="stylesheet" />
+    <link th:href="@{/assets/css/user.css}" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;900&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-theme fixed-top p-0" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container">
+            <a class="navbar-brand fw-normal ls-2" href="{% url 'questionnaire:questionnaire_list' %}">Todo（Spring）</a>
+            <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNavbarCollapse" aria-controls="primaryNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="primaryNavbarCollapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'questionnaire:questionnaire_list' %}">
+                            Todo一覧
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'questionnaire:questionnaire_create' %}">
+                            Todo作成
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+        <div class="preloader" id="preloader" data-preloader>
+            <div class="preloader-wrapper big active" data-preloader>
+                <div class="spinner-layer spinner-white-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ============================================-->
+        <!-- <section> begin ============================-->
+        <!-- <section class="bg-100 py-0 text-center"> -->
+        <section>
+            <div class="container">
+                <div class="row justify-content-center" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+
+                    <div class="col-lg-7">
+                        <div class="mb-3">
+                            <span class="text-700">Todo一覧</span>
+                        </div>
+                        <h3>Todo一覧</h3>
+                        <p th:if="${#lists.isEmpty(todos)}">Todoが存在しません。</p>
+                        <ul class="list-group">
+                            <li class="list-group-item" th:each="todo : ${todos}">
+                                <a href="{% url 'questionnaire:answer_create' questionnaire.questionnaire_id %}" class="d-flex w-100 justify-content-between">
+                                    <span th:text="${todo.todo}">todo</span>
+                                    <small class="align-self-end">最終更新:<span th:text="${#temporals.format(todo.updatedAt, 'yyyy年MM月dd日 HH時mm分')}"></span></small>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+    <footer class="footer text-center bg-light py-3 position-absolute w-100 bottom-0">
+    </footer>
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script th:src="@{/vendors/popper/popper.min.js}"></script>
+    <script th:src="@{/vendors/bootstrap/bootstrap.min.js}"></script>
+    <script th:src="@{/vendors/anchorjs/anchor.min.js}"></script>
+    <script th:src="@{/vendors/is/is.min.js}"></script>
+    <script th:src="@{/vendors/fontawesome/all.min.js}"></script>
+    <script th:src="@{/vendors/lodash/lodash.min.js}"></script>
+    <script th:src="@{/vendors/imagesloaded/imagesloaded.pkgd.min.js}"></script>
+    <script th:src="@{/vendors/gsap/gsap.js}"></script>
+    <script th:src="@{/vendors/gsap/customEase.js}"></script>
+    <script th:src="@{/assets/js/theme.js}"></script>
+
+</body>
+
+</html>
