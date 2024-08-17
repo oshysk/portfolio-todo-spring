@@ -21,4 +21,9 @@ public class TodoController {
         return "todos/index";
     }
 
+    @RequestMapping("/form")
+    public String form(Model model) {
+        return "todos/form";
+    }
+
 }

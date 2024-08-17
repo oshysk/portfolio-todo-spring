@@ -1,0 +1,48 @@
+<html layout:decorate="~{todos/layout}">
+
+<body>
+    <div class="container" layout:fragment="content">
+        <div class="row justify-content-center" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+            <div class="col-lg-7">
+                <div class="mb-3">
+                    <a href="{% url 'todos:index' %}">Todo一覧</a>
+                    <span class="mx-2 text-700">></span>
+                    <span class="text-700">Todo作成</span>
+                </div>
+                <form method="post">
+                    <h3>Todo作成</h3>
+                    <div class="error-summary">
+                        <ul>
+                            <li style="color: red;">エラー</li>
+                        </ul>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="text" placeholder="todo" class="form-control" required />
+                        <div class="errors">
+                            <ul class="errorlist">
+                                <li style="color: red;">エラー</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="form-group mb-3">
+                        <textarea class="form-control" rows="10" placeholder="詳細" required></textarea>
+                        <div class="errors">
+                            <ul class="errorlist">
+                                <li style="color: red;">エラー</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-dark">
+                            <span>作成</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
